@@ -137,9 +137,9 @@ const setUnmuteButton = () => {
 	  <i class="unmute fas fa-microphone-slash"></i>
 	  <span>Unmute</span>
 	`
-	const muteicon = `<i class="unmute fas fa-microphone-slash"></i>`
+	//const muteicon = `<i class="unmute fas fa-microphone-slash"></i>`
 	document.querySelector('.mainMuteButton').innerHTML = html
-	document.getElementById("mainVideos").innerHTML += muteicon;
+	//document.getElementById("mainVideos").innerHTML += muteicon;
 }
 
 const playStop = () => {
