@@ -54,7 +54,7 @@ if(!localStorage.getItem("name-uid")) {
 
 
 function discord() {
-	window.open("", "Join the official discord!", 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=300,height=200,left = 390,top = 50')
+	window.open("https://discord.gg/MuSRNNARc3", "Join the official discord!", 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=597,height=743,left = 390,top = 50')
 }
 
 const peers = {}
