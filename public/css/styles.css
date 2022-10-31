@@ -173,3 +173,13 @@ video {
 	font-size: 13px;
 	outline: 0;
 }
+
+.roomid {
+	color: white;
+	background: transparent;
+}
+
+.roomidtop {
+	background-color: #222222;
+	text-align: center;
+}

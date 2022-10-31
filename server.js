@@ -10,13 +10,13 @@ const peerServer = ExpressPeerServer(server, {
 
 function generate(n) {
     var add = 1, max = 12 - add;
-    
+
     if ( n > max ) {
             return generate(max) + generate(n - max);
     }
     
     max        = Math.pow(10, n+add);
-    var min    = max/10; 
+    var min    = max/10;
     var number = Math.floor( Math.random() * (max - min + 1) ) + min;
 
     return ("" + number).substring(add);
@@ -32,10 +32,29 @@ app.get('/', (req, res) => {
 
 app.get('/room/:room', (req, res) => {
 	//res.render('room', { roomId: req.params.room })
-	res.redirect(`/${req.params.room}`)
+	if(req.params.room.includes === Number) {
+		res.send("tiene numeros")
+	}
+	if(!req.params.room.includes === Number) {
+		res.send("no tiene numeros")
+	}
+	if(req.params.room.length > 16) {
+		res.send("Invalid room id. Room id need to have 16 characters")
+	}
+	if(req.params.room.length < 16) {
+		res.send("Invalid room id. Room id need to have 16 characters")
+	}
 })
 app.get('/:room', (req, res) => {
-	res.render('room', { roomId: req.params.room })
+	if(req.params.room.length > 16) {
+		res.send("Invalid room id. Room id need to have 16 characters")
+	}
+	if(req.params.room.length < 16) {
+		res.send("Invalid room id. Room id need to have 16 characters")
+	}
+	if(req.params.room.length === 16) {
+		res.render('room', { roomId: req.params.room })
+	}
 })
 
 io.on('connection', (socket) => {

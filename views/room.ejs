@@ -7,8 +7,8 @@
     <title>SeeUChat Room</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>      
+    <script src="https://www.unpkg.com/peerjs@1.4.7/dist/peerjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -19,11 +19,26 @@
     </script>
 </head>
 <body>
-
+  <script>
+if(!localStorage.getItem("name")) {
+  var result = prompt("Enter your Username")
+    if(result === "") {
+      window.location.reload();
+    }
+    if(result === null) {
+      window.location.reload();
+    } else {
+      localStorage.setItem("name", result)
+    }
+}
+  </script>
   <div class="main">
     <div class="mainLeft">
+      <div class="roomidtop">
+        <h6 id="roomidh6" class="roomid"></h6>
+      </div>
       <div class="mainVideos">
-        <div id="videoGrid"></div>
+        <div id="videoGrid" style="color: white;"></div>
       </div>
       <div class="mainControls">
         <div class="mainControlsBlock">
@@ -39,6 +54,14 @@
 
         <div class="mainControlsBlock">
          <div class="mainControlsButton" onclick="sharelink()">
+          <i class="fas fa-share"></i>
+           <span>Share Link</span>
+         </div>
+         <div class="mainControlsButton" id="spanclick">
+          <i class="fas fa-user"></i>
+           <span id="spanname"></span>
+         </div>
+         <div class="mainControlsButton" onclick="discord()">
           <i class="fas fa-share"></i>
            <span>Share Link</span>
          </div>
