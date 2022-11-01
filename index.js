@@ -17,34 +17,22 @@ app.get('/', (req, res) => {
 	res.render("index")
 })
 
-app.use(express.json());
+//app.use(express.json());
 
 app.get('/room/:room', (req, res) => {
 	//	res.render('room', { roomId: req.params.room })
-	if(req.params.room.includes === Number) {
-		res.send("tiene numeros")
-	}
-	if(!req.params.room.includes === Number) {
-		res.send("no tiene numeros")
-	}
 	if(req.params.room.length > 16) {
 		res.send("Invalid room id. Room id need to have 16 characters")
 	}
 	if(req.params.room.length < 16) {
 		res.send("Invalid room id. Room id need to have 16 characters")
 	}
-	if(req.params.room === "api") {
-		return;
-	}
 })
 app.get('/:room', (req, res) => {
 	if(req.params.room.length > 16) {
 		res.send("Invalid room id. Room id need to have 16 characters")
 	} else if(req.params.room === "api") {
-		return res.status(200).json({
-			title: "Live api!",
-			message: "The api is working properly!",
-		  });
+		return res.send({title: "Live api!", message: "The api is working properly!",})
 	}
 	if(req.params.room.length < 16) {
 		res.send("Invalid room id. Room id need to have 16 characters")
@@ -52,13 +40,6 @@ app.get('/:room', (req, res) => {
 	if(req.params.room.length === 16) {
 		res.render('room', { roomId: req.params.room })
 	}
-})
-
-app.get('/api', (req, res) => {
-    return res.status(200).json({
-		title: "Live api!",
-		message: "The api is working properly!",
-	  });
 })
 
 app.get('/api/serverlive', (req, res) => {
