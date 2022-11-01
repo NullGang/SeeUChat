@@ -5,7 +5,7 @@ myVideo.muted = true
 const spanname = document.getElementById('spanname');
 const spanclick = document.getElementById('spanclick');
 const roomidh6 = document.getElementById('roomidh6');
-var peer = new Peer()
+var peer = new Peer();
 let username;
 const myPeer = new Peer(undefined, {
 	path: '/peerjs',
